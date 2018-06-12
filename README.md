@@ -9,10 +9,10 @@ Windows, macOS
 実行したい言語の実行環境が必要です。  
 
 ## できること
-OriHimeを制御し、サーボモータの動作をコントロールします。
+- OriHimeを制御し、サーボモータの動作をコントロールします。
 
 ## できないこと
-- 通話の開始、終了をコントロールすることはできません。（状態取得は可能です。対応予定）
+- 通話の開始、終了をコントロールすることはできません。（状態取得は可能です）
 - OriHime PC版コントローラアプリの代わりに通話を行うことはできません。
 
 ---
@@ -33,7 +33,7 @@ macOS, Windows環境共通です。
 - ポート番号なし
 
 接続処理例: node.js
-```
+```js
 const net = require('net');
 const IS_WIN = /^win/.test(process.platform);
 const PIPE_NAME = 'orihime_ipcapi'
@@ -62,7 +62,7 @@ OriHimeの動作をコントロールします。
 OriHimeには3つの部位と、それぞれに2つ、計6つのサーボモータがあります  
 
 |Body part|servo|part-id|initial|note|
-|---|---|---|
+|---|---|---|---|---|
 |head|yaw|head-yaw|0.5|首横方向|
 |head|pitch|head-pitch|0.5|首縦方向|
 |rarm|roll|rarm-roll|0.86|右腕横方向|
@@ -81,11 +81,11 @@ OriHimeのサーボモータの角度はそれぞれが`0.0-1.0`の範囲で表�
 
 
 例: 頭を縦に動かすJSON
-```
+```json
 {
   "type": "move",
   "data": {
-    "part": 'head-pitch',
+    "part": "head-pitch",
     "value": 0.9
   }
 }
@@ -105,7 +105,7 @@ OriHimeのサーボモータの角度はそれぞれが`0.0-1.0`の範囲で表�
     - pitch: 0.0 - 1.0 [number]
 
 例: OriHimeを初期値へ設定するJSON
-```
+```json
 {
   "type": "move-all",
   "data": {
@@ -131,7 +131,7 @@ OriHimeのサーボモータの角度はそれぞれが`0.0-1.0`の範囲で表�
   - index: 0-9[motion index: number]
 
 例: 「はい」を実行するJSON
-```
+```json
 {
   "type": "motion",
   "data": {
@@ -152,8 +152,7 @@ APIの利用に際して発生したいくつかの情報を受信すること�
 |end talk|通話終了|
 |*-error|APIエラーが発生した場合、`-error`を含むエラー情報が発生します|
 
-```
-
+```json
 // 送信データのJSONバリデーションエラー
 {
   "type": "json-parse-error",
