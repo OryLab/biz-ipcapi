@@ -237,11 +237,11 @@ APIの利用に際して発生したいくつかの情報を受信すること�
 #### 応答フォーマット
 - status: `orihimes`
 - message: OriHime情報配列 [Array]
-  - id": ID  [number]
+  - id: ID  [number]
   - username: ユニークユーザーネーム [string]
   - name: 名前 [string]
   - affiliation: 所属 [string]
-  - status":通話可否状態 [boolean]
+  - status:通話可否状態 [boolean]
 - needAuth: ハイレベルAPIであるか否か[boolean]
 
 例: 状態の応答
